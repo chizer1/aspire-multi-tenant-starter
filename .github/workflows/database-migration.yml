@@ -1,0 +1,26 @@
+name: Database Migration
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate-tenants:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "9.0.x"
+
+      - name: Restore & Build
+        run: |
+          dotnet build DbMigrator/DbMigrator.csproj --configuration Release
+
+      - name: Run Database Migrations
+        env:
+          ConnectionStrings__Base: ${{ secrets.DbLocator_Connection_String }}
+        run: |
+          dotnet run --project DbMigrator/DbMigrator.csproj
