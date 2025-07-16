@@ -47,8 +47,11 @@ services.AddSingleton(sp =>
     var baseConnectionString =
         config["ConnectionStrings:Base"]
         ?? throw new InvalidOperationException("Base connection string is not configured.");
+
     return new DbLocatorWrapper(baseConnectionString);
 });
+
+services.AddHostedService<DbLocatorInitializer>();
 builder.Services.AddTransient<IClaimsTransformation, KeycloakRoleClaimsTransformer>();
 
 builder

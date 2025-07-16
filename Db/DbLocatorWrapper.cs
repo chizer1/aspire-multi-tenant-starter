@@ -42,6 +42,26 @@ public class DbLocatorWrapper(string connectionString)
         );
     }
 
+    public async Task AddDatabaseType()
+    {
+        var databaseTypes = await locator.GetDatabaseTypes();
+
+        if (databaseTypes.Any(dt => dt.Name == "Client"))
+            return;
+
+        await locator.CreateDatabaseType("Client");
+    }
+
+    public async Task AddDatabaseServer()
+    {
+        var databaseServers = await locator.GetDatabaseServers();
+
+        if (databaseServers.Any(dt => dt.Name == "Docker"))
+            return;
+
+        await locator.CreateDatabaseServer("Docker", "localhost", null, null, false);
+    }
+
     public async Task<int> AddDatabaseUser(
         int databaseId,
         string databaseUserName,
