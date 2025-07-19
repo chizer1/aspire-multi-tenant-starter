@@ -7,7 +7,7 @@
     <PackageVersion Include="Aspire.Hosting" Version="9.3.0" />
      <PackageVersion Include="Aspire.Hosting.NodeJs" Version="9.3.0" />
     <PackageVersion Include="Aspire.Hosting.SqlServer" Version="9.3.0" />
-    <PackageVersion Include="DbLocator" Version="1.3.0" />
+    <PackageVersion Include="DbLocator" Version="2.0.0" />
     <PackageVersion Include="Finbuckle.MultiTenant.AspNetCore" Version="9.2.1" />
     <PackageVersion Include="Keycloak.AuthServices.Aspire.Hosting" Version="0.1.0-preview1" />
     <PackageVersion Include="Keycloak.AuthServices.Authentication" Version="2.5.3" />
